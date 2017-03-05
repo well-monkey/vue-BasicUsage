@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>v-for</title>
+	<script src="../assets/js/vue.js"></script>
+    <link rel="stylesheet" type="text/css" href="../assets/css/index.css">	
+</head>
+<body>
+	<h1>v-for实例</h1>
+	<div id="app">
+		<ul>
+			<li v-for="aaa in devStudent">
+				{{aaa}}
+			</li>
+		</ul>
+		<ul>
+			<li v-for="(bbb,index) in devSort">
+				{{index}} -{{bbb.name}} - {{bbb.age}}
+			</li>
+		</ul>
+	</div>
+</body>
+<script>
+	var Vm = new Vue({
+		el:"#app",
+		data:{
+			arrStudent:[100,22,32,34,43,45,46,4],
+			devStudent:"",
+			stuInfo:[
+				{"name":"liu yi",age:"12"},
+				{"name":"liu er",age:"13"},
+				{"name":"liu san",age:"24"},
+				{"name":"liu si",age:"16"},
+				{"name":"liu wu",age:"7"},
+				{"name":"liu liu",age:"65"},
+				{"name":"liu qi",age:"8"},
+			]
+		},
+		computed:{
+			devStudent:function(){
+				return this.arrStudent.sort(sortNumber)
+			},
+			devSort: function(){
+				return sortByKey(this.stuInfo,"age")
+			}
+		},
+		
+	})
+	function sortByKey(array,key){
+		return array.sort(function(a,b){
+			var x =a[key];var y=b[key];
+			return ((x < y) ? -1 : ((x>y) ? 1 : 0));
+		})
+	}
+	function sortNumber(a,b){
+		return a-b		
+	}
+</script>
+</html>

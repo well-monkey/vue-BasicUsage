@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>computed</title>
+	<script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		{{yuanjia}}
+		{{zhekou}}
+		{{xianjia}}
+		<button @click="add">价格加</button>
+	</div>
+</body>
+<script type="text/javascript">
+	var vm = new Vue({
+		el:"#app",
+		data:{
+			message:"hello computed",
+			yuanjia:"100",
+			zhekou:"0.5",
+			xianjia:""
+		},
+		computed:{
+			message:function(){
+				return this.message = "message liu"
+			},
+			xianjia:function(){
+				return this.xianjia=this.yuanjia*this.zhekou
+			}
+		},
+		methods:{
+			add:function(){
+				this.yuanjia++
+			}
+		}
+
+	})
+</script>
+</html>

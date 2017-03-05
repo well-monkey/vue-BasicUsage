@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue-set</title>
+	<script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+	<h1>vue.set</h1>
+	<div id="app">
+		<ul>
+			<li v-for="aaa in goods">
+				{{aaa.name}} - {{aaa.num}}
+			</li>
+		</ul>
+		<p><button @click="qingkong">清空</button></p>
+		<p>总数是{{count}}</p> 
+	</div>
+	<button onclick="add()">添加商品</button>
+</body>
+<script type="text/javascript">
+	var aass = {
+		count:"100",
+		goods:[
+			{"name":"car","num":"2"},
+			{"name":"house","num":"1"}		
+		]
+	}
+	var vm = new Vue({
+		el:"#app",
+		data:aass,
+		methods:{
+			qingkong:function(){
+				this.count = 0;
+			}
+		}
+	})
+	function add(){
+		aass.goods.push({"name":"pen","num":"5"})
+		vm.count=parseInt(vm.count)+parseInt(5);
+	}
+</script>
+</html>

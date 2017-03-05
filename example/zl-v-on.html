@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>v-on</title>
+	<script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+
+		<h1>{{message}}</h1>
+		<p>b:input框的值</p>
+		<p>a:{{a}}</p>
+		<p>
+			<button v-on:click="jia">加</button>
+			<button @click="jian">减</button>
+			<button v-on:click="he">a+b和</button>
+		</p>
+		<p>
+			<input type="text" @keyup.enter="onEntern" v-model="b" >回车有惊喜</input>
+		</p>
+	</div>
+</body>
+<script type="text/javascript">
+	var vm = new Vue({
+		el:"#app",
+		data:{
+			message:"v-on实用教程",
+			a:1,
+			b:1
+		},
+		methods:{
+			jia:function(){
+				this.a++;
+			},
+			jian:function(){
+				this.a--;
+			},
+			he:function(){
+				this.a = this.a+parseInt(this.b);
+			},
+			onEntern:function(){
+				this.b = this.a++;
+			}
+		}
+	})
+</script>
+</html>

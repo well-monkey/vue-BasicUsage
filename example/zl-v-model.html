@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>v-model</title>
+	<script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<p>原始文本{{message}}</p>
+		<h3>文本框</h3>
+		<p>v-model<input type="text" v-model="message"></input></p>
+		<p>v-model.lazy<input type="text" v-model.lazy="message"></p>
+		<p>v-model.number<input type="text" v-model.number="message"></p>
+		<p>v-model.trim<input type="text" v-model.trim="message"></p>
+		<hr/>
+		<h3>文本区域</h3>
+		<p>
+			<textarea v-model="message"></textarea>
+			<textarea>{{message}}</textarea>
+		</p>
+		<hr>
+		<h3>单选按钮</h3>
+		<p>
+			<input type="checkbox" id="asdf" v-model="xz"></input>
+			<label for="asdf">{{xz}}</label>
+		</p>
+		<hr>
+		<p>
+		  	<h3>多选框</h3>
+			<input type="checkbox" id="jack" value="jack" v-model="xzArray"></input>
+			<label for="jack">jack</label>
+			<input type="checkbox" id="marry" value="marry"  v-model="xzArray"></input>
+			<label for="marry">marry</label>
+			<input type="checkbox" id="james" value="james" v-model="xzArray"></input>
+			<label for="james">james</label>
+			<p>{{xzArray}}</p>
+			<hr>
+			<h3>单选按钮</h3>
+			<input type="radio" id="one" value="男" v-model="danxuan"></input>
+			<label for="one">男</label>
+			<input type="radio" id="two" value="女" v-model="danxuan"></input>
+			<label for="two">女</label>
+			<p>{{danxuan}}</p>
+			<hr>
+			<h3>单选按钮</h3>
+			<p>
+				<select v-model="dadada">
+					<option>a</option>
+					<option>b</option>
+					<option>c</option>	
+				</select>
+				<p>{{dadada}}</p>
+			</p>
+			<hr>
+			<h3>多选按钮-按住shift键操作</h3>
+			<select v-model="rerge" multiple="multiple">
+				<option>a</option>
+				<option>b</option>
+				<option>c</option>	
+			</select>
+			<p>{{rerge}}</p>
+		</p>
+		<hr>
+		<h3>配合v-for使用</h3>
+		<p>
+			<select v-model="arrayK">
+				<option v-for="option in options">{{option}}</option>
+			</select>
+			<span>你选择的是{{arrayK}}</span>
+		</p>
+	</div>
+</body>
+<script type="text/javascript">
+	var vm = new Vue({
+		el:"#app",
+		data:{
+			message:"hello vue 这里是v-model",
+			xz:true,
+			xzArray:[],
+			danxuan:"",
+			dadada:"",
+			rerge:[],
+			options:[1,2,3,4],
+			arrayK:""
+		}
+	})
+</script>
+</html>

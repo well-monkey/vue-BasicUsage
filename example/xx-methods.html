@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>methods</title>
+	<script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		{{a}}
+		<p><button @click="add(2,$event)">价格加(看控制台)</button></p>
+		<h1>三种访问事件方法</h1>
+		<p><button onclick="jian()">原生减法</button></p>
+		<p><btn @click.native="jian">减法(模板加.native)</btn></p>
+	</div>
+	<button onclick="vm.jian()">作用域外面访问作用域里面的减法</button>
+</body>
+<script type="text/javascript">
+	function jian(){
+		vm.a--;
+	}
+	var btn ={
+		template:"<button>减法</button>"
+	}
+	var vm = new Vue({
+		el:"#app",
+		data:{
+			a:100
+		},
+		methods:{
+			add:function(num,event){
+				console.log(num);
+				console.log(event);
+				this.a++;
+			},
+			jian:function (num,argument) {
+				this.a--;
+			}
+		},
+		components:{
+			"btn":btn
+		}
+
+	})
+</script>
+</html>

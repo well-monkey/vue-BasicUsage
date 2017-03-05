@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>v-bind</title>
+	<script type="text/javascript" src="../assets/js/vue.js"></script>
+	<style type="text/css">
+		.classA{
+			color: red;
+			font-size: 30px;
+		}
+		.classB{
+			color:aqua;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<img v-bind:src="imageSrc" :width="width">
+		<div :class="className">1.绑定div</div>
+		<div :class="{classB:classOr}">2.绑定class中的判断</div>
+		<div :class="[classA,classB]">3.绑定class中使用数组</div>
+		<div :class="[classOr?classA:classB]">4.绑定class中实用三目表达式</div>
+		<div :class="[{classA:classOr},classB]">5.绑定判断组合</div>
+		<div :style="{color:pinkA,fontSize:fontA}">6.sytle绑定</div>
+		<div :style="fontArray">style绑定json语句</div>
+	</div>
+</body>
+<script type="text/javascript">
+	var vm = new Vue({
+		el:"#app",
+		data:{
+			imageSrc:"http://imgsrc.baidu.com/forum/pic/item/2d3e73f082025aaf9527f450feedab64024f1ac5.jpg",
+			width:"200",
+			className:"classA",
+			classOr:true,
+			classA:"classA",
+			classB:"classB",
+			pinkA:"pink",
+			fontA:"40px",
+			fontArray:{
+				color:"green",
+				fontSize:"50px"
+			}
+		}
+	})
+</script>
+</html>

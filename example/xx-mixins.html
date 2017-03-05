@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>mixins</title>
+	<script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<p>
+				mixins 选项接受一个混合对象的数组。这些混合实例对象可以像正常的实例对象一样包含选项,他们将在 Vue.extend() 里最终选择使用相同的选项合并逻辑合并。举例：如果你混合包含一个钩子而创建组件本身也有一个,两个函数将被调用。
+		Mixin钩子按照传入顺序依次调用,并在调用组件自身的钩子之前被调用。
+		</p>
+		<p>{{message}}</p>
+		<p><button @click="jia">加入(控制台看一下先后顺序)</button></p>
+	</div>
+</body>
+<script type="text/javascript">
+	Vue.mixin({
+		created:function(){
+			console.log("我是全局被混入的-慎用")
+		}
+	})
+	var aaa ={
+		data:{
+			message:"mixins"
+		},
+		created:function(){
+			console.log("我是被混入的-mixins")
+		},
+		methods:{
+			jia:function(){
+				console.log("我是被加入的-minxins")
+			}
+		}
+	}
+	var vm = new Vue({
+		el:"#app",
+		data:{
+			message:"mixins"
+		},
+		created:function(){
+			console.log("我是构造器里面原装的")
+		},
+		methods:{
+			jia:function(){
+				console.log("我是被加入的")
+			}
+		},
+		mixins:[aaa]  //必须得写
+	})
+</script>
+</html>

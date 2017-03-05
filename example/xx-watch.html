@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>v-watch</title>
+	<script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<p id="header">苹果数量{{n}}</p>
+		<p><button @click="jia">加</button></p>
+		<p><button @click="jian">减</button></p>
+		<p>香蕉数量{{num}}</p>
+		<p>香蕉价格{{price}}</p>
+		<p>香蕉总价{{sum}}</p>
+		<p><button @click="plus">加</button></p>
+		<p><button @click="subtract">减</button></p>
+	</div>
+</body>
+<script>
+	var Vm = new Vue({
+		el:"#app",
+		data:{
+			n:"12",
+			num:"19",
+			price:"5",
+			sum:""
+		},
+		methods:{
+			jia:function(){
+				this.n++;
+			},
+			jian:function(){
+				this.n--;
+			},
+			plus:function(){
+				this.num++;
+				this.sum = this.num*this.price
+			},
+			subtract:function(){
+				this.num--;
+				this.sum = this.num*this.price
+			},
+
+
+		},
+		// watch:{
+		// 	n:function(newVal,oldVal){
+		// 		//console.log(oldVal);
+		// 		if(newVal<1){
+		// 			console.log(newVal);
+		// 			this.n = 1
+		// 		}
+		// 	}
+		// }
+	})
+	Vm.$watch('n', function(newVal) {
+	  if(newVal<1){
+	  	Vm.n =1
+	  }
+	}) 				
+	//写在外面的方式 实力属性
+	Vm.$watch('sum', function(newVal) {
+		  if(newVal>=100){
+		  	Vm.sum = this.sum -20
+		  }
+	  // else if(newVal*5>=100){
+	  	
+	  // }
+	}) 
+
+</script>
+</html>

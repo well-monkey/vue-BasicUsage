@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>template</title>
+	<script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<!-- <template id="demo2">
+			<h1 style="color:red">你好,我是标签模板</h1>
+		</template> -->
+	</div>
+</body>
+<script type="x-template" id="demo3">
+	<h1 style="color:red">你好,我是script模板 放在前面</h1>
+</script>
+<script type="text/javascript">
+	var Vm = new Vue({
+		el:"#app",
+		data:{
+			n:"12",
+			message:"hello"
+		},
+		template:"#demo3" 
+		// template:`
+		// 	<h1 style="color:red">你好，我是选项模板</h1>
+		// `	
+		// 第一种模板方式 选项模板
+	})
+</script>
+
+
+</html>

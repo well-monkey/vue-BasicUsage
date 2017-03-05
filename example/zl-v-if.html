@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>v-if</title>
+	  <script src="../assets/js/vue.js"></script>
+    <link rel="stylesheet" type="text/css" href="../assets/css/index.css">
+    <style type="text/css">
+		.hide{
+			display: none
+		}
+
+    </style>
+</head>
+<body>
+	<h1>判断v-if</h1>
+	<div id="app">
+		<p v-if="ok">原来是真的啊</p>
+		<div v-if="ok1">原来是假的啊</div>
+		<div v-show="show">判断</div>
+		
+		<div v-if="this.show1==11">11</div>
+		<template v-else> 
+		    <div v-if="this.show1 ==22">22</div>
+		    <div v-else>33</div>
+		</template>
+		
+	</div>
+	
+</body>
+<script>
+	var vuea = new Vue({
+		el:"#app",
+		data:{
+			ok:true,
+			ok1:false,
+			show:true,
+			show1:"22",
+			show2:"22",
+			show3:"",
+			abc:{
+				a:"1",
+				b:"2",
+				c:"3"
+			}
+
+		}
+	})
+</script>
+</html>

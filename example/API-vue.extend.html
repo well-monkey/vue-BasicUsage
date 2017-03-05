@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vue-extend</title>
+	<script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<header id="header"></header>
+	</div>
+</body>
+<script type="text/javascript">
+	var header_a = Vue.extend({
+		template:"<p>{{message}}</p>",
+		data:function(){
+			return {
+				message:"hello my honey"
+			}
+		}
+	})
+	new header_a().$mount("#header")
+	//头部或者尾部文件  可以单独引用一个js 就是上门的内容。 注意 这里的data 写法有点不同，data加了function
+	var vm = new Vue({
+		el:"#app"	
+	})
+</script>
+</html>

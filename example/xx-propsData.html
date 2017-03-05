@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>props-Data</title>
+	<script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<header></header>
+	</div>
+</body>
+<script type="text/javascript">
+	var header_aaa=Vue.extend({
+		template:"<p>{{message}}</p>",
+		data:function(){
+			return{
+				message:"hello header"
+			} 
+		},
+		props:["a"]//接收的过程
+
+	})
+	//传值的过程
+	new header_aaa({
+		propsData:{
+			a:1
+		}
+	}).$mount("header")
+
+	var vm = new Vue({
+		el:"#app",
+		data:{
+			message:"hello vue prop"
+		}
+	})
+</script>
+</html>

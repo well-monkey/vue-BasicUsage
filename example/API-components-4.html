@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>template4</title>
+	<script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+	<div id="app">	
+		<world :is="who">is是vue自定义的指令。说绑定哪个模板</world>
+	</div>
+</body>
+<script type="text/javascript">
+	PA = {
+		data:function() {
+			return {
+				a:"模板里面的data必须return"
+			}
+		},
+		template:"<div>this is PA {{a}}</div>"
+	}
+	PB = {
+		template:"<div>this is PB</div>"
+	}
+	PC = {
+		template:"<div>this is PC</div>"
+	}
+	PD = {
+		template:"<div>this is PD</div>"
+	}
+	var vm = new Vue({
+		el:"#app",
+		data:{
+			who:PA
+		},
+		components:{
+			"PA":PA,
+			"PB":PB,
+			"PC":PC,
+			"PD":PD,
+		}
+	})
+</script>
+</html>
